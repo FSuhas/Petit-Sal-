@@ -4,6 +4,10 @@ from datetime import datetime
 import pytz
 import asyncio
 from flask import Flask
+from dotenv import load_dotenv
+
+load_dotenv()
+TOKEN = os.getenv('DISCORD_TOKEN')
 
 app = Flask(__name__)
 
