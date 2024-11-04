@@ -4,6 +4,15 @@ from datetime import datetime
 import pytz
 import asyncio
 from flask import Flask
+from dotenv import load_dotenv
+
+load_dotenv()
+
+@client.event
+async def on_ready():
+    print(f'{client.user} has connected to discord')
+
+client.run(TOKEN)
 
 app = Flask(__name__)
 
@@ -125,4 +134,4 @@ flask_thread = threading.Thread(target=run_flask)
 flask_thread.start()
 
 # Remplacez 'YOUR_TOKEN' par le token de votre bot
-bot.run('DISCORD_KEY')  # Remplacez par votre token
+bot.run(TOKEN)  # Remplacez par votre token
