@@ -1,6 +1,7 @@
 import os
 import discord
 from datetime import datetime
+from discord.ext import commands, tasks
 import pytz
 import asyncio
 from flask import Flask
@@ -19,6 +20,7 @@ def hello_world():
 # Configuration du bot
 intents = discord.Intents.default()
 intents.messages = True
+bot = commands.Bot(command_prefix='!', intents=intents)
 
 # Liste des instances dans l'ordre donné
 instances = [
