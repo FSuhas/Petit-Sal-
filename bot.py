@@ -1,3 +1,4 @@
+import os
 import discord
 from discord.ext import commands, tasks
 from datetime import datetime
@@ -5,6 +6,7 @@ import pytz
 import asyncio
 from flask import Flask
 from dotenv import load_dotenv
+import threading
 
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
@@ -17,6 +19,7 @@ def hello_world():
 
 # Configuration du bot
 intents = discord.Intents.default()
+intents.messages = True
 bot = commands.Bot(command_prefix='!', intents=intents)
 
 # Liste des instances dans l'ordre donné
@@ -109,10 +112,13 @@ async def send_instance(channel):
 @tasks.loop(minutes=1)
 async def daily_instance():
     channel = bot.get_channel(1296490530099822685)  # Remplacez par l'ID de votre canal
-    now = datetime.now(pytz.timezone('Europe/Paris'))  # Changez le fuseau horaire si nécessaire
+    now = datetime.now(pytz.timezone('Europe/Paris'))
 
     if now.hour == 7 and now.minute == 0:  # À 7h du matin
-        await send_instance(channel)
+        try:
+            await send_instance(channel)
+        except Exception as e:
+            print(f"Erreur lors de l'envoi du message : {e}")
         await asyncio.sleep(60)  # Évite les répétitions dans la même minute
 
 @bot.event
@@ -124,9 +130,8 @@ def run_flask():
     app.run(host='0.0.0.0', port=1000)
 
 # Démarrer Flask
-import threading
 flask_thread = threading.Thread(target=run_flask)
 flask_thread.start()
 
-# Remplacez 'YOUR_TOKEN' par le token de votre bot
-bot.run(TOKEN)  # Remplacez par votre token
+# Démarrer le bot
+bot.run(TOKEN)
