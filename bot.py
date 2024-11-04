@@ -3,6 +3,7 @@ from discord.ext import commands, tasks
 from datetime import datetime
 import pytz
 import asyncio
+from flask import Flask
 
 app = Flask(__name__)
 
@@ -124,4 +125,4 @@ flask_thread = threading.Thread(target=run_flask)
 flask_thread.start()
 
 # Remplacez 'YOUR_TOKEN' par le token de votre bot
-bot.run('MTMwMjk1MDAzNzk3Mzg5NzIzNg.GGP8yX.DNj6NYLl4NxhhAEjL78OoSpkP1kNpud-K93V1k')  # Remplacez par votre token
+bot.run('YOUR_TOKEN')  # Remplacez par votre token
