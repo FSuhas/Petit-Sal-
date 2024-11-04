@@ -3,10 +3,12 @@ from discord.ext import commands, tasks
 from datetime import datetime
 import pytz
 import asyncio
-from flask import Flask
 
-port = 10000
+app = Flask(__name__)
 
+@app.route('/')
+def hello_world():
+    return 'Hello World!'
 
 # Configuration du bot
 intents = discord.Intents.default()
@@ -112,6 +114,14 @@ async def daily_instance():
 async def on_ready():
     print(f'Bot connecté en tant que {bot.user}')
     daily_instance.start()  # Démarre l'annonce quotidienne
+
+def run_flask():
+    app.run(host='0.0.0.0', port=1000)
+
+# Démarrer Flask
+import threading
+flask_thread = threading.Thread(target=run_flask)
+flask_thread.start()
 
 # Remplacez 'YOUR_TOKEN' par le token de votre bot
 bot.run('MTMwMjk1MDAzNzk3Mzg5NzIzNg.GGP8yX.DNj6NYLl4NxhhAEjL78OoSpkP1kNpud-K93V1k')  # Remplacez par votre token
