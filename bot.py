@@ -4,15 +4,7 @@ from datetime import datetime
 import pytz
 import asyncio
 from flask import Flask
-from dotenv import load_dotenv
-
-load_dotenv()
-
-@client.event
-async def on_ready():
-    print(f'{client.user} has connected to discord')
-
-client.run(TOKEN)
+import .env
 
 app = Flask(__name__)
 
