@@ -6,7 +6,7 @@ import asyncio
 from flask import Flask
 
 app = Flask(__name__)
-port = 10000
+port = 18012
 
 @app.route('/')
 def hello_world():
