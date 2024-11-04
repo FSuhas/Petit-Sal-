@@ -4,7 +4,6 @@ from datetime import datetime
 import pytz
 import asyncio
 from flask import Flask
-import .env
 
 app = Flask(__name__)
 
