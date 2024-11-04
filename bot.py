@@ -129,4 +129,4 @@ flask_thread = threading.Thread(target=run_flask)
 flask_thread.start()
 
 # Remplacez 'YOUR_TOKEN' par le token de votre bot
-bot.run(DISCORD_TOKEN)  # Remplacez par votre token
+bot.run(TOKEN)  # Remplacez par votre token
