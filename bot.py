@@ -109,4 +109,4 @@ async def on_ready():
     daily_instance.start()  # Démarre l'annonce quotidienne
 
 # Remplacez 'YOUR_TOKEN' par le token de votre bot
-bot.run('MTMwMjk1MDAzNzk3Mzg5NzIzNg.GUhLZe.XLKhMuXQk09W7Ibi6n38_D_qF6xtGSx-2cxu9E')
+bot.run('MTMwMjk1MDAzNzk3Mzg5NzIzNg.G65YnW.ABiCWV6FdPBc4grE86woCrxxRdBM8NCEpxhw_k')
