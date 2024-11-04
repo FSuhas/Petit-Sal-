@@ -5,12 +5,8 @@ import pytz
 import asyncio
 from flask import Flask
 
-app = Flask(__name__)
-port = 19099
+port = 10000
 
-@app.route('/')
-def hello_world():
-    return 'Hello World!'
 
 # Configuration du bot
 intents = discord.Intents.default()
