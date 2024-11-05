@@ -88,7 +88,7 @@ instances = [
 ]
 
 # Index de l'instance actuelle
-current_instance_index = 4
+current_instance_index = 6
 
 # Fonction pour envoyer l'annonce quotidienne
 async def send_instance(channel):
